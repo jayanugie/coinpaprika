@@ -9,7 +9,7 @@ const Navbar = () => {
           <NavLink
             className={({ isActive }) =>
               isActive
-                ? "text-sky-500 font-bold border-b-4 border-sky-500"
+                ? "text-sky-700 font-bold border-b-4 border-sky-700"
                 : "text-neutral-500"
             }
             to="/"
@@ -19,7 +19,7 @@ const Navbar = () => {
           <NavLink
             className={({ isActive }) =>
               isActive
-                ? "text-sky-500 font-bold border-b-4 border-sky-500"
+                ? "text-sky-700 font-bold border-b-4 border-sky-700"
                 : "text-neutral-500"
             }
             to="/coin-list"
