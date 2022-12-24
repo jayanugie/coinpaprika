@@ -6,8 +6,9 @@ const Search = () => {
       <select
         id="countries"
         className="border border-gray-300 text-neutral-500 text-sm rounded sm:p-2 p-1 basis-2/6"
+        defaultValue={'default'}
       >
-        <option selected>Select</option>
+        <option value={'default'}>Select</option>
         <option value="coin">Coin</option>
         <option value="token">Token</option>
       </select>

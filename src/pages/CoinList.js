@@ -22,7 +22,7 @@ const CoinList = () => {
       <Navbar />
       <main className="container mx-auto lg:px-20 px-2">
         <p className=" text-sm text-neutral-500 py-5">Cont List</p>
-        <div className="rounded-md shadow-md p-5 bg-white mb-5">
+        <div className="rounded-md shadow-md sm:p-5 p-2 bg-white mb-5">
           <p className=" text-sky-700 font-semibold">Coin List</p>
           <Search />
           <Table coins={ coins }/>
