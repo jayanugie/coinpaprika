@@ -9,3 +9,11 @@ html {
 main {
   min-height: 76.5vh;
 }
+
+td, th {
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f0f9ff;
+}
