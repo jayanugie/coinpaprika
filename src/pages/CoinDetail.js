@@ -1,19 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import { capitalizeFirstLetter } from "../helpers/helpers";
 
 const CoinDetail = () => {
   const [coin, setCoin] = useState({});
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     const fetchCoin = async () => {
+      setLoading(true);
       const { data } = await axios.get(
         `https://api.coinpaprika.com/v1/coins/${id}`
       );
       setCoin(data);
+      setLoading(false);
     };
 
     fetchCoin();
@@ -37,23 +41,27 @@ const CoinDetail = () => {
               <li>Active</li>
               <li>Is New</li>
             </ul>
-            <ul className="space-y-5 font-semibold">
-              <li>{coin.id}</li>
-              <li>{coin.name}</li>
-              <li>{coin.symbol}</li>
-              <li>{coin.type ? capitalizeFirstLetter(coin.type) : null}</li>
-              <li>
-                {typeof coin.is_active !== "undefined" &&
-                coin.is_active.toString
-                  ? capitalizeFirstLetter(coin.is_active.toString())
-                  : null}
-              </li>
-              <li>
-                {typeof coin.is_new !== "undefined" && coin.is_new.toString
-                  ? capitalizeFirstLetter(coin.is_new.toString())
-                  : null}
-              </li>
-            </ul>
+            {loading ? (
+              <Loading />
+            ) : (
+              <ul className="space-y-5 font-semibold">
+                <li>{coin.id}</li>
+                <li>{coin.name}</li>
+                <li>{coin.symbol}</li>
+                <li>{coin.type ? capitalizeFirstLetter(coin.type) : null}</li>
+                <li>
+                  {typeof coin.is_active !== "undefined" &&
+                  coin.is_active.toString
+                    ? capitalizeFirstLetter(coin.is_active.toString())
+                    : null}
+                </li>
+                <li>
+                  {typeof coin.is_new !== "undefined" && coin.is_new.toString
+                    ? capitalizeFirstLetter(coin.is_new.toString())
+                    : null}
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </main>

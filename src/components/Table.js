@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { capitalizeFirstLetter } from "../helpers/helpers";
+import Loading from "./Loading";
 
-const Table = ({ coins }) => {
+const Table = ({ coins, loading }) => {
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <table className="w-full text-xs sm:text-sm md:text-base">
       <thead className="text-left bg-sky-600 text-white">
