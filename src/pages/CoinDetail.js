@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-// import { capitalizeFirstLetter } from "../helpers/helpers";
+import { capitalizeFirstLetter } from "../helpers/helpers";
 
 const CoinDetail = () => {
   const [coin, setCoin] = useState({});
@@ -14,7 +14,6 @@ const CoinDetail = () => {
         `https://api.coinpaprika.com/v1/coins/${id}`
       );
       setCoin(data);
-      console.log(data);
     };
 
     fetchCoin();
@@ -42,9 +41,18 @@ const CoinDetail = () => {
               <li>{coin.id}</li>
               <li>{coin.name}</li>
               <li>{coin.symbol}</li>
-              <li>{coin.type}</li>
-              <li>{coin.is_active}</li>
-              <li>{coin.is_new}</li>
+              <li>{capitalizeFirstLetter(coin.type)}</li>
+              <li>
+                {typeof coin.is_active !== "undefined" &&
+                coin.is_active.toString
+                  ? capitalizeFirstLetter(coin.is_active.toString())
+                  : "undefined"}
+              </li>
+              <li>
+                {typeof coin.is_new !== "undefined" && coin.is_new.toString
+                  ? capitalizeFirstLetter(coin.is_new.toString())
+                  : "undefined"}
+              </li>
             </ul>
           </div>
         </div>
