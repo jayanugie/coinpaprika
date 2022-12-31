@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Footer from "../components/Footer";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import { capitalizeFirstLetter } from "../helpers/helpers";
@@ -65,6 +66,7 @@ const CoinDetail = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

@@ -11,8 +11,8 @@ const CoinList = () => {
 
   const fetchingCoins = async () => {
     setLoading(true);
-    const data = await axios.get("https://api.coinpaprika.com/v1/coins");
-    setCoins(data.data.slice(0,50));
+    const { data } = await axios.get("https://api.coinpaprika.com/v1/coins");
+    setCoins(data.slice(0, 50));
     setLoading(false);
   };
 
@@ -28,7 +28,7 @@ const CoinList = () => {
         <div className="rounded-md shadow-md sm:p-5 p-2 bg-white mb-5">
           <p className=" text-sky-700 font-semibold">Coin List</p>
           <Search />
-          <Table loading={loading} coins={ coins }/>
+          <Table loading={loading} coins={coins} />
         </div>
       </main>
       <Footer />
