@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from "../helpers/helpers";
 import Loading from "./Loading";
 import ReactPaginate from "react-paginate";
 
-const Table = ({ coins, loading }) => {
+const Table = ({ loading, coins }) => {
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
