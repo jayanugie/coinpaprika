@@ -9,6 +9,24 @@ const CoinList = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false);
   const [filterTypeValue, setFilterTypeValue] = useState("default");
+  const [searchCoin, setSearchCoin] = useState("");
+
+  const onSearchBar = (findCoin) => {
+    setSearchCoin(findCoin);
+  };
+
+  const searchButton = (e) => {
+    e.preventDefault();
+    const findCoin =
+      coins && coins?.length > 0
+        ? coins?.filter((coin) => coin?.name === searchCoin)
+        : undefined;
+    setCoins(findCoin);
+  };
+
+  const onFilterValueSelected = (filterValue) => {
+    setFilterTypeValue(filterValue);
+  };
 
   const filteredCoinList = coins.filter((coin) => {
     if (filterTypeValue === "coin") {
@@ -27,10 +45,6 @@ const CoinList = () => {
     setLoading(false);
   };
 
-  const onFilterValueSelected = (filterValue) => {
-    setFilterTypeValue(filterValue);
-  };
-
   useEffect(() => {
     fetchingCoins();
   }, []);
@@ -42,7 +56,11 @@ const CoinList = () => {
         <p className=" text-sm text-neutral-500 py-5">Cont List</p>
         <div className="rounded-md shadow-md sm:p-5 p-2 bg-white mb-5">
           <p className=" text-sky-700 font-semibold">Coin List</p>
-          <Search filterValueSelected={onFilterValueSelected} />
+          <Search
+            filterValueSelected={onFilterValueSelected}
+            searchBar={onSearchBar}
+            searchButton={searchButton}
+          />
           <Table loading={loading} coins={filteredCoinList} />
         </div>
       </main>
